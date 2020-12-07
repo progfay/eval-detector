@@ -4,11 +4,15 @@ services:
     image: chromedp/headless-shell:latest
     ports:
       - "9222:9222"
+    expose:
+      - "9222"
 
   node:
     build: ./
     ports:
       - "8080:8080"
+    environment:
+      CHROME_HOST: "chrome"
     depends_on:
       - chrome
     command: npm start

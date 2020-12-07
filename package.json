@@ -40,5 +40,8 @@
     "prettier-config-standard": "1.0.1",
     "ts-loader": "8.0.11",
     "typescript": "4.1.2"
+  },
+  "dependencies": {
+    "chrome-remote-interface": "^0.28.2"
   }
 }
