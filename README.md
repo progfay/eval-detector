@@ -27,11 +27,9 @@ docker-compose up --build node
 ### with Local Environment
 
 1. Run only headless-chrome in background
-2. Build source code written in TypeScript
-3. Execute built Javascript code
+2. Execute built Javascript code
 
 ```sh
 docker-compose up -d chrome
-npm run build
 npm start
 ```

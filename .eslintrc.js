@@ -5,23 +5,14 @@ module.exports = {
   },
   extends: [
     'standard',
-    'standard-with-typescript',
-    'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react'
+    'prettier'
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
   },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    project: './tsconfig.json'
-  },
   rules: {
     'prettier/prettier': 'error'
   },
-  plugins: ['@typescript-eslint', 'prettier']
+  plugins: ['prettier']
 }

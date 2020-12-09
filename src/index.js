@@ -1,8 +1,8 @@
-import CDP from 'chrome-remote-interface'
+const CDP = require('chrome-remote-interface')
 
-const main: () => Promise<void> = async () => {
-  const url = 'http:///localhost:8000'
-  const client = await (CDP as any)({
+const main = async () => {
+  const url = 'http://localhost:8000'
+  const client = await CDP({
     port: 9222,
     host: process.env.CHROME_HOST ?? 'localhost',
   })
