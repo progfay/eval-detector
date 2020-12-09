@@ -1,6 +1,6 @@
-# cdp-template
+# `eval()` Detector
 
-Template Repository with Chrome DevTools Protocol
+Detect calling `eval()` on specific website
 
 ## Usage
 
