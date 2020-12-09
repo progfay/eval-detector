@@ -6,11 +6,25 @@ const main = async () => {
     port: 9222,
     host: process.env.CHROME_HOST ?? 'localhost',
   })
-  await client.Log.entryAdded(console.log)
-  await client.Log.enable()
+  await client.Runtime.enable()
+  const unsubscribe = await client.Runtime.consoleAPICalled(console.log)
+
   await client.Page.enable()
+  await client.Page.addScriptToEvaluateOnNewDocument({
+    source: `
+        (function(native) {
+          globalThis.eval = function() {
+            native.apply(this, arguments)
+            console.trace(arguments)
+          }
+        })(globalThis.eval)
+      `,
+  })
   await client.Page.navigate({ url })
   await client.Page.loadEventFired()
+  unsubscribe()
+  await client.Runtime.disable()
+  await client.Page.disable()
   await client.close()
 }
 
