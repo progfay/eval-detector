@@ -21,7 +21,7 @@ const main = async () => {
   })
 
   await client.Page.enable()
-  await client.Page.addScriptToEvaluateOnNewDocument({
+  const detectingScript = await client.Page.addScriptToEvaluateOnNewDocument({
     source: `
         (function(native) {
           ${TARGET_FUNCTION} = function() {
@@ -35,6 +35,7 @@ const main = async () => {
   await client.Page.loadEventFired()
 
   unsubscribe()
+  await client.Page.removeScriptToEvaluateOnNewDocument(detectingScript)
   await client.Runtime.disable()
   await client.Page.disable()
   await client.close()
